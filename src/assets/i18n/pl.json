@@ -1,1 +1,7 @@
-{}
+{
+  "theme": {
+    "header": {
+      "title": "Cats"
+    }
+  }
+}
