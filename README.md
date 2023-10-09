@@ -8,6 +8,9 @@ The UI library is provided by PrimeNG. Documentation can be found [here](https:/
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
+This application requires mock server to be launched on local host for authorization purpose. Authorization Mock Server runs on express.js. To start it run `ng start:mock`.
+Mock Server runs on 3000 port.
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
