@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test-watch": "ng test --code-coverage --browsers=ChromeHeadless",
+    "test:watch": "ng test --code-coverage --browsers=ChromeHeadless",
     "test:coverage": "ng test --code-coverage --browsers=ChromeHeadless --no-watch",
     "lint": "ng lint"
   },
@@ -20,6 +20,8 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@ngx-translate/core": "^15.0.0",
+    "@ngx-translate/http-loader": "^8.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
