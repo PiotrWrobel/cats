@@ -1,0 +1,20 @@
+{
+  "name": "auth-mock-server",
+  "version": "1.0.0",
+  "description": "Authorization Mock Server",
+  "main": "index.ts",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "npm run build && cd ./build/ && node index.js"
+  },
+  "author": "Piotr Wróbel",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.8.4",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  }
+}
