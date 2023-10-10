@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MessageService } from 'primeng/api';
 import { ButtonModule } from 'primeng/button';
@@ -25,16 +26,21 @@ import { LoginForm } from './form-builder/model/login-form';
   providers: [LoginFormBuilderService, MessageService],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginContainerComponent {
+export class LoginContainerComponent implements OnInit {
   private readonly formService: LoginFormBuilderService = inject(LoginFormBuilderService);
   private readonly navigationService: NavigationService = inject(NavigationService);
   private readonly translateService: TranslateService = inject(TranslateService);
   private readonly messageService: MessageService = inject(MessageService);
   private readonly userService: UserService = inject(UserService);
+  private readonly titleService: Title = inject(Title);
 
   private readonly _isLoading$: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
-  public login(): void {
+  public ngOnInit(): void {
+    this.titleService.setTitle(this.translateService.instant('login.title'));
+  }
+
+  protected login(): void {
     this.form.markAllAsTouched();
 
     if (this.form.valid) {

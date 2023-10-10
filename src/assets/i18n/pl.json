@@ -1,7 +1,8 @@
 {
   "theme": {
     "header": {
-      "title": "Cats"
+      "title": "Cats",
+      "logout": "Wyloguj"
     }
   },
   "cats": {

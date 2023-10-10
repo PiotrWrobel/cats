@@ -26,5 +26,10 @@ describe('NavigationService', () => {
       service.navigateToCatsPage();
       expect(spyRouter.navigate).toHaveBeenCalledOnceWith([RoutePath.CATS]);
     });
+
+    it('should navigate to login', () => {
+      service.navigateToLoginPage();
+      expect(spyRouter.navigate).toHaveBeenCalledOnceWith([RoutePath.LOGIN]);
+    });
   });
 });

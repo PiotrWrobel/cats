@@ -1,4 +1,5 @@
 import { HttpErrorResponse, HttpStatusCode } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 import { TranslateService } from '@ngx-translate/core';
 import { MockBuilder, MockRender, ngMocks } from 'ng-mocks';
 import { MessageService } from 'primeng/api';
@@ -15,12 +16,17 @@ describe('LoginContainerComponent', () => {
   let spyNavigationService: jasmine.SpyObj<NavigationService>;
   let spyTranslateService: jasmine.SpyObj<TranslateService>;
   let spyMessageService: jasmine.SpyObj<MessageService>;
+  let spyTitle: jasmine.SpyObj<Title>;
 
   describe('component init', () => {
     setUp();
 
     it('should create LoginContainerComponent', () => {
       expect(component).toBeTruthy();
+    });
+
+    it('should set title for login page', () => {
+      expect(spyTitle.setTitle).toHaveBeenCalledOnceWith('login.title');
     });
   });
 
@@ -80,11 +86,13 @@ describe('LoginContainerComponent', () => {
       spyTranslateService = jasmine.createSpyObj('TranslateService', ['instant']);
       spyMessageService = jasmine.createSpyObj('MessageService', ['add']);
       spyUserService = jasmine.createSpyObj('UserService', ['login']);
+      spyTitle = jasmine.createSpyObj('Title', ['setTitle']);
       await MockBuilder(LoginContainerComponent)
         .mock(MessageService, spyMessageService)
         .mock(NavigationService, spyNavigationService)
         .mock(TranslateService, spyTranslateService)
         .mock(UserService, spyUserService)
+        .mock(Title, spyTitle)
         .keep(LoginFormBuilderService);
 
       spyMessageService.add.calls.reset();
