@@ -1,0 +1,12 @@
+<h2 class="p-text-secondary">{{'cats.title' | translate}}</h2>
+
+<div class="facts" infiniteScroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="500"
+     (scrolled)="onScrolled()">
+  <cats-fact *ngFor="let fact of facts$ | async"
+             [factIndex]="(facts$ | async)!.indexOf(fact)">{{fact}}</cats-fact>
+</div>
+
+<p-toast></p-toast>
+<p-scrollTop></p-scrollTop>

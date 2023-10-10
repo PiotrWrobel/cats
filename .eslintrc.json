@@ -30,8 +30,7 @@
             "propertyDeclaration": true,
             "variableDeclaration": true,
             "memberVariableDeclaration": true,
-            "variableDeclarationIgnoreFunction": true,
-            "arrowParameter": true
+            "variableDeclarationIgnoreFunction": true
           }
         ],
         "@angular-eslint/directive-selector": [

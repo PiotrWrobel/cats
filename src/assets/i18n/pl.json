@@ -3,5 +3,14 @@
     "header": {
       "title": "Cats"
     }
+  },
+  "cats": {
+    "title": "Koty - ciekawe informacje",
+    "facts": {
+      "fact": "Fact #{{fact}}"
+    }
+  },
+  "errors": {
+    "load-data-failed": "Błąd pobierania danych!"
   }
 }
