@@ -6,7 +6,8 @@
     "types": [],
     "paths": {
       "~api/*": ["./src/app/api/*"],
-      "~theme/*": ["./src/app/theme/*"]
+      "~theme/*": ["./src/app/theme/*"],
+      "~core/*": ["./src/app/core/*"]
     }
   },
   "files": [
