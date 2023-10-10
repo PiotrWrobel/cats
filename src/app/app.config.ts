@@ -5,7 +5,8 @@ import { provideRouter } from '@angular/router';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-import { AuthInterceptor } from '~core/interceptors/auth.interceptor';
+import { AuthInterceptor } from '~core/interceptors/auth/auth.interceptor';
+import { RefreshTokenInterceptor } from '~core/interceptors/refresh-token/refresh-token.interceptor';
 
 import { routes } from './app.routes';
 
@@ -26,7 +27,8 @@ export const appConfig: ApplicationConfig = {
         }
       })
     ]),
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: RefreshTokenInterceptor, multi: true }
   ]
 };
 
