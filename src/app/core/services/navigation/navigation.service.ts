@@ -12,4 +12,8 @@ export class NavigationService {
   public navigateToCatsPage(): Promise<boolean> {
     return this.router.navigate([RoutePath.CATS]);
   }
+
+  public navigateToLoginPage(): Promise<boolean> {
+    return this.router.navigate([RoutePath.LOGIN]);
+  }
 }

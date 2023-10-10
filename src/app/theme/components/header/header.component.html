@@ -1,3 +1,7 @@
 <div class="p-component header">
-  {{'theme.header.title' | translate}}
+    <span>{{'theme.header.title' | translate}}</span>
+    <p-button *ngIf="(isLoggedIn$ | async)!" testId="logout-button"
+              [icon]="'pi pi-user'"
+              [label]="'theme.header.logout' | translate"
+              (click)="logout()"></p-button>
 </div>

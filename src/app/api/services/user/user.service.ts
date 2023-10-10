@@ -34,7 +34,12 @@ export class UserService {
   }
 
   public logout(): Observable<void> {
-    return this.http.get<void>(ApiUrls.userLogoutUrl);
+    return this.http.get<void>(ApiUrls.userLogoutUrl).pipe(
+      tap(() => {
+        this.store.clearToken();
+        this._isLoggedIn$.next(false);
+      })
+    );
   }
 
   public get isLoggedIn$(): Observable<boolean> {

@@ -64,6 +64,9 @@ describe('UserService', () => {
 
       const testRequest: TestRequest = controller.expectOne('/user/logout');
       expect(testRequest.request.method).toBe('GET');
+      testRequest.flush({});
+
+      expect(spyAuthStoreService.clearToken).toHaveBeenCalledTimes(1);
     });
 
     it('should refresh token', () => {
@@ -79,7 +82,7 @@ describe('UserService', () => {
   });
 
   function setUp(token: string | null = null): void {
-    spyAuthStoreService = jasmine.createSpyObj('AuthStoreService', ['getToken', 'storeToken']);
+    spyAuthStoreService = jasmine.createSpyObj('AuthStoreService', ['getToken', 'storeToken', 'clearToken']);
 
     beforeEach(async (): Promise<void> => {
       await MockBuilder(UserService).keep(HttpClientTestingModule).mock(AuthStoreService, spyAuthStoreService);
