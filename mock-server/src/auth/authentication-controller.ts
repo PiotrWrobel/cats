@@ -22,7 +22,7 @@ export class AuthenticationController {
   }
 
   private static logoutUser(server: Express): void {
-    server.post('/user/logout', (_req: Request, res: Response) => {
+    server.get('/user/logout', (_req: Request, res: Response) => {
       res.send();
     });
   }
