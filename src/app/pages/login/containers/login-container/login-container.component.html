@@ -1,0 +1,33 @@
+<form [formGroup]="form" class="page-content">
+    <p-card [title]="'login.title' | translate">
+      <div class="card-content">
+        <span>{{'login.user-name' | translate}}</span>
+        <span class="p-input-icon-left">
+            <i class="pi pi-user"></i>
+            <input type="text" pInputText [formControl]="userNameControl"/>
+        </span>
+        <span *ngIf="userNameControl.touched && userNameControl.invalid"
+              class="p-error">{{'errors.field-required' | translate}}</span>
+
+        <span class="second-label">{{'login.password' | translate}}</span>
+        <span class="p-input-icon-left">
+            <i class="pi pi-lock"></i>
+            <input type="password" pInputText [formControl]="passwordControl"/>
+        </span>
+        <span *ngIf="passwordControl.touched && passwordControl.invalid"
+              class="p-error">{{'errors.field-required' | translate}}</span>
+
+        <div class="button-section">
+          <p-button testId="login-button"
+                    [loading]="(isLoading$ | async)!"
+                    [disabled]="(isLoading$ | async)!"
+                    pRipple
+                    label="{{'login.login-button' | translate}}"
+                    icon="pi pi-check"
+                    (click)="login()"
+          ></p-button>
+        </div>
+      </div>
+
+    </p-card>
+</form>

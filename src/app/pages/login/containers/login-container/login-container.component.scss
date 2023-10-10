@@ -1,0 +1,24 @@
+.page-content {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  margin-top: 50px;
+
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 200px;
+  }
+
+  .second-label {
+    margin-top: 20px
+  }
+
+  .button-section {
+    margin-top: 20px;
+    display: flex;
+    justify-content: end;
+  }
+}
+

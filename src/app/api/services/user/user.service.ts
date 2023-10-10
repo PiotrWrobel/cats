@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable, tap } from 'rxjs';
 
-import { AuthStoreService } from '../../../core/services/store/auth-store.service';
-import { ApiUrls } from '../../api-urls';
+import { ApiUrls } from '~api/api-urls';
+import { AuthStoreService } from '~core/services/store/auth-store.service';
+
 import { AuthorizationResponse } from './model/authorization-response';
 import { LoginRequest } from './model/login-request';
 

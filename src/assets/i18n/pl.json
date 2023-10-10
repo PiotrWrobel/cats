@@ -10,7 +10,15 @@
       "fact": "Fact #{{fact}}"
     }
   },
+  "login": {
+    "title": "Zaloguj się",
+    "user-name": "Użytkownik",
+    "password": "Hasło",
+    "login-button": "Zaloguj"
+  },
   "errors": {
-    "load-data-failed": "Błąd pobierania danych!"
+    "load-data-failed": "Błąd pobierania danych!",
+    "field-required": "Pole wymagane!",
+    "invalid-login": "Niepoprawny login lub hasło"
   }
 }
