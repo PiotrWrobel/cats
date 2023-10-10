@@ -3,8 +3,8 @@ import { HttpClientTestingModule, HttpTestingController, TestRequest } from '@an
 import { MockBuilder, ngMocks } from 'ng-mocks';
 import { first } from 'rxjs';
 
-import { ApiUrls } from '../../api/api-urls';
-import { AuthStoreService } from '../services/store/auth-store.service';
+import { ApiUrls } from '../../../api/api-urls';
+import { AuthStoreService } from '../../services/store/auth-store.service';
 import { AuthInterceptor } from './auth.interceptor';
 
 describe('AuthInterceptor', () => {

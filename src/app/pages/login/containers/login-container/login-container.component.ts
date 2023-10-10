@@ -9,7 +9,8 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { ChipsModule } from 'primeng/chips';
 import { RippleModule } from 'primeng/ripple';
-import { BehaviorSubject, first, Observable, switchMap } from 'rxjs';
+import { ToastModule } from 'primeng/toast';
+import { BehaviorSubject, first, Observable, switchMap, takeWhile } from 'rxjs';
 
 import { UserService } from '~api/services/user/user.service';
 import { NavigationService } from '~core/services/navigation/navigation.service';
@@ -20,7 +21,16 @@ import { LoginForm } from './form-builder/model/login-form';
 @Component({
   selector: 'cats-login-container',
   standalone: true,
-  imports: [CommonModule, TranslateModule, ChipsModule, ReactiveFormsModule, CardModule, ButtonModule, RippleModule],
+  imports: [
+    CommonModule,
+    TranslateModule,
+    ChipsModule,
+    ReactiveFormsModule,
+    CardModule,
+    ButtonModule,
+    RippleModule,
+    ToastModule
+  ],
   templateUrl: './login-container.component.html',
   styleUrls: ['./login-container.component.scss'],
   providers: [LoginFormBuilderService, MessageService],
@@ -38,6 +48,14 @@ export class LoginContainerComponent implements OnInit {
 
   public ngOnInit(): void {
     this.titleService.setTitle(this.translateService.instant('login.title'));
+
+    this.userService.isLoggedIn$
+      .pipe(
+        takeWhile((isLoggedIn: boolean) => isLoggedIn),
+        switchMap(() => this.userService.logout()),
+        first()
+      )
+      .subscribe();
   }
 
   protected login(): void {

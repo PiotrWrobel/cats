@@ -28,6 +28,10 @@ describe('LoginContainerComponent', () => {
     it('should set title for login page', () => {
       expect(spyTitle.setTitle).toHaveBeenCalledOnceWith('login.title');
     });
+
+    it('should logout user on init if he is logged in', () => {
+      expect(spyUserService.logout).toHaveBeenCalledTimes(1);
+    });
   });
 
   describe('on valid login form', () => {
@@ -85,7 +89,7 @@ describe('LoginContainerComponent', () => {
       spyNavigationService = jasmine.createSpyObj('NavigationService', ['navigateToCatsPage']);
       spyTranslateService = jasmine.createSpyObj('TranslateService', ['instant']);
       spyMessageService = jasmine.createSpyObj('MessageService', ['add']);
-      spyUserService = jasmine.createSpyObj('UserService', ['login']);
+      spyUserService = jasmine.createSpyObj('UserService', ['login', 'logout'], { isLoggedIn$: of(true) });
       spyTitle = jasmine.createSpyObj('Title', ['setTitle']);
       await MockBuilder(LoginContainerComponent)
         .mock(MessageService, spyMessageService)

@@ -1,10 +1,9 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ApiUrls } from 'src/app/api/api-urls';
 
-import { ApiUrls } from '~api/api-urls';
-
-import { AuthStoreService } from '../services/store/auth-store.service';
+import { AuthStoreService } from '../../services/store/auth-store.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
