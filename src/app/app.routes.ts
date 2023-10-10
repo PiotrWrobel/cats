@@ -1,17 +1,22 @@
 import { Routes } from '@angular/router';
 
-export enum RuthePath {
-  CATS = 'cats'
-}
+import { authGuard } from '~core/guards/auth.guard';
+import { RoutePath } from '~core/services/navigation/path/route-path';
 
 export const routes: Routes = [
   {
-    path: RuthePath.CATS,
+    path: RoutePath.CATS,
     loadComponent: () =>
-      import('./pages/cats/containers/cats-container/cats-container.component').then(c => c.CatsContainerComponent)
+      import('./pages/cats/containers/cats-container/cats-container.component').then(c => c.CatsContainerComponent),
+    canActivate: [authGuard]
+  },
+  {
+    path: RoutePath.LOGIN,
+    loadComponent: () =>
+      import('./pages/login/containers/login-container/login-container.component').then(c => c.LoginContainerComponent)
   },
   {
     path: '**',
-    redirectTo: RuthePath.CATS
+    redirectTo: RoutePath.CATS
   }
 ];
